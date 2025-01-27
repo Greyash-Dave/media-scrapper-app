@@ -10,12 +10,14 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__, static_folder="static")
-cors = CORS(app, origins="*")
+
+# Get allowed origins from environment variable
+ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS', '*').split(',')
+cors = CORS(app, origins=ALLOWED_ORIGINS)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 
 # Initialize YouTube API client
 def get_youtube_client():
