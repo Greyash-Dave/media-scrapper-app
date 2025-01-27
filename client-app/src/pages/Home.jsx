@@ -1,4 +1,3 @@
-// Home.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -50,9 +49,7 @@ const Home = () => {
         endpoint = "/api/video";
       }
 
-      const baseUrl = import.meta.env.VITE_APP_API_BASE_URL;
-
-      const response = await axios.get(`${baseUrl}${endpoint}/${identifier}`);
+      const response = await axios.get(`${endpoint}/${identifier}`);
       navigate("/results", { state: { data: response.data } });
     } catch (err) {
       setError("Failed to fetch data. Please try again.");
