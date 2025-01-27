@@ -1,0 +1,4 @@
+flask
+flask-cors
+google-api-python-client
+python-dotenv

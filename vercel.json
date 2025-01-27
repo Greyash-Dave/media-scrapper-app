@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "scrapper-app/main.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "scrapper-app/static/**",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/scrapper-app/static/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/scrapper-app/main.py"
+      }
+    ]
+  }
