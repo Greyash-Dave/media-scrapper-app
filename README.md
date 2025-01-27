@@ -153,4 +153,4 @@ GET /api/video/categories?regionCode=US
 - **Name**: [Gresham Dave C]
 - **Email**: [greyashdave@gmail.com]
 - **GitHub**: [[Greyash-Dave](https://github.com/Greyash-Dave)]
-- **LinkedIn**: [[gresham-dave](https://www.linkedin.com/in/gresham-dave)]
+- **LinkedIn**: [[Gresham-Dave](https://www.linkedin.com/in/gresham-dave)]
