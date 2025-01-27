@@ -50,7 +50,7 @@ const Home = () => {
         endpoint = "/api/video";
       }
 
-      const response = await axios.get(`${endpoint}/${identifier}`);
+      const response = await axios.get(`/${endpoint}/${identifier}`);
       navigate("/results", { state: { data: response.data } });
     } catch (err) {
       setError("Failed to fetch data. Please try again.");
