@@ -71,7 +71,7 @@ const Home = () => {
       const isVideo = link.includes("watch?v=") || link.includes("/shorts/");
       const endpoint = isVideo ? "/api/video" : "/api/channel";
       const resultRoute = isVideo ? "/video-results" : "/channel-results";
-      const response = await axios.get(`http://localhost:5000${endpoint}/${identifier}`);
+      const response = await axios.get(`https://media-scrapper-app.vercel.app${endpoint}/${identifier}`);
       if (!response.data) {
         throw new Error("Invalid data received from server");
       }
