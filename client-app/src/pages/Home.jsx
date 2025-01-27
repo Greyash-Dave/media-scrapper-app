@@ -176,6 +176,48 @@ const Home = () => {
 
       {/* Scrollable Video Analytics Section */}
       <div className="mt-5 pt-20 pb-8 w-full h-full flex flex-col items-center ">
+      <div className="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+        <details className="group">
+          <summary className="flex items-center justify-between cursor-pointer">
+            <h3 className="text-lg font-semibold text-gray-700">Example URL Formats</h3>
+            <svg
+              className="w-5 h-5 text-gray-500 transition-transform transform group-open:rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </summary>
+          <div className="mt-4 space-y-2 text-sm text-gray-600">
+            <p>Here are some example formats you can use:</p>
+            <ul className="list-disc list-inside">
+              <li>
+                <code className="bg-gray-100 p-1 rounded">https://www.youtube.com/@User/videos</code> → <span className="font-semibold">@User</span>
+              </li>
+              <li>
+                <code className="bg-gray-100 p-1 rounded">https://www.youtube.com/@User/featured</code> → <span className="font-semibold">@User</span>
+              </li>
+              <li>
+                <code className="bg-gray-100 p-1 rounded">https://www.youtube.com/c/User</code> → <span className="font-semibold">@User</span>
+              </li>
+              <li>
+                <code className="bg-gray-100 p-1 rounded">https://www.youtube.com/channel/UC1234567890</code> → <span className="font-semibold">UC1234567890</span>
+              </li>
+              <li>
+                <code className="bg-gray-100 p-1 rounded">https://www.youtube.com/watch?v=VIDEO_ID</code> → <span className="font-semibold">VIDEO_ID</span>
+              </li>
+              <li>
+                <code className="bg-gray-100 p-1 rounded">https://www.youtube.com/shorts/VIDEO_ID</code> → <span className="font-semibold">VIDEO_ID</span>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
         <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
           <TrendingUp className="w-6 h-6 mr-2" />
           Popular Video Analytics
