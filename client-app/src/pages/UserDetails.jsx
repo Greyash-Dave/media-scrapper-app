@@ -29,7 +29,7 @@ const UserDetails = () => {
           youtubeUrl = `https://youtube.com/@${username}`;
         }
 
-        const response = await axios.post("http://localhost:5000/scrape", {
+        const response = await axios.post("/scrape", {
           url: youtubeUrl,
         });
 
