@@ -50,7 +50,9 @@ const Home = () => {
         endpoint = "/api/video";
       }
 
-      const response = await axios.get(`/${endpoint}/${identifier}`);
+      const baseUrl = import.meta.env.VITE_APP_API_BASE_URL;
+
+      const response = await axios.get(`${baseUrl}${endpoint}/${identifier}`);
       navigate("/results", { state: { data: response.data } });
     } catch (err) {
       setError("Failed to fetch data. Please try again.");
