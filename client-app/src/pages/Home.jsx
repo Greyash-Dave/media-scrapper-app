@@ -11,6 +11,8 @@ const Home = () => {
   const [videoCategories, setVideoCategories] = useState([]);
   const navigate = useNavigate();
 
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const isValidYouTubeUrl = (url) => {
     const patterns = [
       /^(https?:\/\/)?(www\.)?youtube\.com\/channel\/[^/]+/,
@@ -71,7 +73,7 @@ const Home = () => {
       const isVideo = link.includes("watch?v=") || link.includes("/shorts/");
       const endpoint = isVideo ? "/api/video" : "/api/channel";
       const resultRoute = isVideo ? "/video-results" : "/channel-results";
-      const response = await axios.get(`https://media-scrapper-app.vercel.app${endpoint}/${identifier}`);
+      const response = await axios.get(`${BASE_URL}${endpoint}/${identifier}`);
       if (!response.data) {
         throw new Error("Invalid data received from server");
       }
@@ -95,7 +97,7 @@ const Home = () => {
 
   const fetchTrendingVideos = async () => {
     try {
-      const response = await axios.get("https://media-scrapper-app.vercel.app/api/video/trending");
+      const response = await axios.get(`${BASE_URL}/api/video/trending`);
       setTrendingVideos(response.data.trending_videos);
     } catch (err) {
       console.error("Error fetching trending videos:", err);
@@ -104,7 +106,7 @@ const Home = () => {
 
   const fetchVideoCategories = async () => {
     try {
-      const response = await axios.get("https://media-scrapper-app.vercel.app/api/video/categories");
+      const response = await axios.get(`${BASE_URL}/api/video/categories`);
       setVideoCategories(response.data.categories);
     } catch (err) {
       console.error("Error fetching video categories:", err);
