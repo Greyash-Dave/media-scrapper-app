@@ -1,11 +1,7 @@
+// Home.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-// Create axios instance with base URL
-const api = axios.create({
-  baseURL: 'https://media-scrapper-app.vercel.app'  // Your Flask app URL
-});
 
 const Home = () => {
   const [link, setLink] = useState("");
@@ -49,15 +45,14 @@ const Home = () => {
     setError("");
     try {
       const identifier = extractIdentifier(link);
-      let endpoint = "/api/video";
-      if (!link.includes("watch?v=") && !link.includes("/shorts/")) {
-        endpoint = "/api/channel";
+      let endpoint = "/api/channel";
+      if (link.includes("watch?v=") || link.includes("/shorts/")) {
+        endpoint = "/api/video";
       }
 
-      const response = await api.get(`${endpoint}/${identifier}`);
+      const response = await axios.get(`https://media-scrapper-app.vercel.app/${endpoint}/${identifier}`);
       navigate("/results", { state: { data: response.data } });
     } catch (err) {
-      console.error('API Error:', err);
       setError("Failed to fetch data. Please try again.");
     } finally {
       setLoading(false);
