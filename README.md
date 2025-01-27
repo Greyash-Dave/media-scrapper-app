@@ -1,4 +1,4 @@
-# YouTube Analytics Dashboard
+# YouTube Scraper
 
 ## Overview
 A comprehensive analytics dashboard that provides insights into YouTube channels and videos. Built with a Flask backend and React frontend, this application interacts with the YouTube Data API to deliver detailed analytics about channels, videos, and trends.
