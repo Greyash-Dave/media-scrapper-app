@@ -8,6 +8,14 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Get the base URL from window.location.origin in production
+  const getBaseUrl = () => {
+    if (window.location.hostname === 'localhost') {
+      return '';  // Empty string for local development
+    }
+    return window.location.origin;  // Full origin URL in production
+  };
+
   const isValidYouTubeUrl = (url) => {
     const patterns = [
       /^(https?:\/\/)?(www\.)?youtube\.com\/channel\/[^/]+/,
@@ -44,14 +52,16 @@ const Home = () => {
     setError("");
     try {
       const identifier = extractIdentifier(link);
-      let endpoint = "/api/channel";
-      if (link.includes("watch?v=") || link.includes("/shorts/")) {
-        endpoint = "/api/video";
+      let endpoint = "/api/video";
+      if (!link.includes("watch?v=") && !link.includes("/shorts/")) {
+        endpoint = "/api/channel";
       }
 
-      const response = await axios.get(`${endpoint}/${identifier}`);
+      const baseUrl = getBaseUrl();
+      const response = await axios.get(`${baseUrl}${endpoint}/${identifier}`);
       navigate("/results", { state: { data: response.data } });
     } catch (err) {
+      console.error('API Error:', err);
       setError("Failed to fetch data. Please try again.");
     } finally {
       setLoading(false);
