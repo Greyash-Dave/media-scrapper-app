@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Results from "./pages/Results";
-import UserDetails from "./pages/UserDetails";
-import './index.css'; // Import Tailwind CSS
+import VideoResults from "./pages/VideoResults";
+import ChannelResults from "./pages/ChannelResults";
+import './index.css';
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/user-details/:username" element={<UserDetails />} />
+        <Route path="/video-results" element={<VideoResults />} />
+        <Route path="/channel-results" element={<ChannelResults />} />
       </Routes>
     </Router>
   );
