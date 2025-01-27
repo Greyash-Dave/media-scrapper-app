@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+// Create axios instance with base URL
+const api = axios.create({
+  baseURL: 'https://media-scrapper-app.vercel.app'  // Your Flask app URL
+});
+
 const Home = () => {
   const [link, setLink] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  // Get the base URL from window.location.origin in production
-  const getBaseUrl = () => {
-    if (window.location.hostname === 'localhost') {
-      return '';  // Empty string for local development
-    }
-    return window.location.origin;  // Full origin URL in production
-  };
 
   const isValidYouTubeUrl = (url) => {
     const patterns = [
@@ -57,8 +54,7 @@ const Home = () => {
         endpoint = "/api/channel";
       }
 
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
-      const response = await axios.get(`${baseUrl}${endpoint}/${identifier}`);
+      const response = await api.get(`${endpoint}/${identifier}`);
       navigate("/results", { state: { data: response.data } });
     } catch (err) {
       console.error('API Error:', err);
