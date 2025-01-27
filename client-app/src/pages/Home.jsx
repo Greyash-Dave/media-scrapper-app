@@ -57,7 +57,7 @@ const Home = () => {
         endpoint = "/api/channel";
       }
 
-      const baseUrl = getBaseUrl();
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
       const response = await axios.get(`${baseUrl}${endpoint}/${identifier}`);
       navigate("/results", { state: { data: response.data } });
     } catch (err) {
