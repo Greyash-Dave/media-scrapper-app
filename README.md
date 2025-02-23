@@ -4,6 +4,7 @@
 A comprehensive analytics dashboard that provides insights into YouTube channels and videos. Built with a Flask backend and React frontend, this application interacts with the YouTube Data API to deliver detailed analytics about channels, videos, and trends.
 
 [![Watch the video](https://img.youtube.com/vi/Ec6fSGSY0Ls/0.jpg)](https://www.youtube.com/watch?v=Ec6fSGSY0Ls)
+
 🔗 **[Watch the video on YouTube](https://www.youtube.com/watch?v=Ec6fSGSY0Ls)**
 
 
